@@ -34,7 +34,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/reservation', function (req, res) {
-    res.sendFile(path.join(__dirname, 'app/public/reserveration.html'));
+    res.sendFile(path.join(__dirname, 'app/public/reservation.html'));
 });
 
 app.get('/api/tables', function(req, res) {
