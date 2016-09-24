@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  
+
   $.ajax({
     url: 'https://glacial-falls-73483.herokuapp.com/api/tables',
     dataType: 'JSON',
@@ -22,7 +22,7 @@ $(document).ready(function(){
   });
 
   $.ajax({
-    url: 'https://glacial-falls-73483.herokuapp.com/api/tables',
+    url: 'https://glacial-falls-73483.herokuapp.com/api/waitlist',
     dataType: 'JSON',
     success: function(data) {
       for (var i = 0; i < data.length; i++) {
@@ -37,7 +37,7 @@ $(document).ready(function(){
         tr.append($('<td class="text-center">').text(email));
         tr.append($('<td class="text-center">').text(phone));
         tr.append($('<td class="text-center">').text(id));
-        $('#tables').append(tr);
+        $('#waitlist').append(tr);
       }
     }
   });
