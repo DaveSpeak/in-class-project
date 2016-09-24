@@ -47,6 +47,10 @@ app.get('/api/tables', function(req, res) {
     });
 });
 
+app.get('/tables', function (req, res) {
+    res.sendFile(path.join(__dirname, 'app/public/tables.html'));
+});
+
 app.post('/api/new', function(req, res) {
     console.log(req.body);
     var reservation = req.body;
