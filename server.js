@@ -3,6 +3,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var firebase = require("firebase");
+
+//firebase
+var firebase = require("firebase");
+firebase.initializeApp({
+  serviceAccount: "fbKey.json",
+  databaseURL: 'https://hot-restaurant.firebaseio.com/'
+});
+var db = firebase.database();
 
 // Sets up the Express App
 // =============================================================
@@ -22,6 +31,34 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname, 'app/public/index.html'));
+});
+
+app.get('/reservation', function (req, res) {
+    res.sendFile(path.join(__dirname, 'app/public/reserveration.html'));
+});
+
+app.get('/api/tables', function(req, res) {
+    var tables = [];
+    db.ref('tables').once("value", function(snapshot) {
+        snapshot.forEach(function(snap) {
+            tables.push(snap.val());
+        });
+        res.send(tables);
+    });
+});
+
+app.get('/tables', function (req, res) {
+    res.sendFile(path.join(__dirname, 'app/public/tables.html'));
+});
+
+app.post('/api/new', function(req, res) {
+    console.log(req.body);
+    var reservation = req.body;
+    db.ref('tables').push(reservation);
+});
+
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'app/404/404.html'));
 });
 
 // Starts the server to begin listening
