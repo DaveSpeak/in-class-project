@@ -4,9 +4,10 @@ $(document).ready(function(){
     dataType: 'JSON',
     success: function(data) {
       for (var i = 0; i < data.length; i++) {
+        console.log(data);
         var name = data[i].name;
         var email = data[i].email;
-        var phone = data[i].phone;
+        var phone = data[i].phone_number;
         var id = data[i].id;
         var tr = $('<tr>');
         tr.addClass('table-row');
