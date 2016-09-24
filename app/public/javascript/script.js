@@ -6,7 +6,7 @@ $(document).ready(function(){
 				phone_number: $('#phonenumber').val().trim(),
 				email: $('#email').val().trim()
 			};
-			console.log(newReservation);
+
 			var currentURL = window.location.origin;
 
 			// Question: What does this code do??
