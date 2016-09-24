@@ -1,5 +1,6 @@
 .jumbotron {
 	text-align:center;
+	border-radius: 15px;
 }
 .jumbotron h1{
 	font-size:70px;
