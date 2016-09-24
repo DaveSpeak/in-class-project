@@ -3,6 +3,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var firebase = require("firebase");s
+
+//firebase
+var firebase = require("firebase");
+firebase.initializeApp({
+  serviceAccount: "fbKey.json",
+  databaseURL: 'https://plex-movies-71335.firebaseio.com/'
+});
+var db = firebase.database();
 
 // Sets up the Express App
 // =============================================================
