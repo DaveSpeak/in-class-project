@@ -41,11 +41,25 @@ app.get('/api/tables', function(req, res) {
     var tables = [];
     db.ref('tables').once("value", function(snapshot) {
         snapshot.forEach(function(snap) {
-            tables.push(snap.val());
+            var table = snap.val();
+            table.id = snap.key;
+            tables.push(table);
         });
         res.send(tables);
     });
 });
+
+app.get('/api/waitlist', function (req, res) {
+    var waitlist = [];
+    db.ref('waitlist').once("value", function(snapshot) {
+        snapshot.forEach(function(snap) {
+            var table = snap.val();
+            table.id = snap.key;
+            waitlist.push(table);
+        })
+        res.send(waitlist);
+    })
+})
 
 app.get('/tables', function (req, res) {
     res.sendFile(path.join(__dirname, 'app/public/tables.html'));
@@ -54,7 +68,14 @@ app.get('/tables', function (req, res) {
 app.post('/api/new', function(req, res) {
     console.log(req.body);
     var reservation = req.body;
-    db.ref('tables').push(reservation);
+    db.ref('tables').once("value", function(snapshot) {
+        var tables = snapshot.numChildren();
+        if (tables >= 5) {
+            db.ref('waitlist').push(reservation);
+        } else {
+            db.ref('tables').push(reservation);
+        }
+    })
 });
 
 app.get('*', function(req, res) {
