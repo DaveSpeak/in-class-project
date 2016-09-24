@@ -3,7 +3,7 @@ $(document).ready(function(){
 		$('#addBtn').on('click', function () {
 			var newReservation = {
 				name: $('#name').val().trim(),
-				phonenumber: $('#phonenumber').val().trim(),
+				phone_number: $('#phonenumber').val().trim(),
 				email: $('#email').val().trim()
 			};
 			console.log(newReservation);
@@ -16,8 +16,6 @@ $(document).ready(function(){
 					alert('Adding reservation');
 				});
 
-			return false;
+			window.location = '/tables';
 		});
 });
-
-
