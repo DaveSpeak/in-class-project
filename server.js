@@ -9,7 +9,7 @@ var firebase = require("firebase");s
 var firebase = require("firebase");
 firebase.initializeApp({
   serviceAccount: "fbKey.json",
-  databaseURL: 'https://plex-movies-71335.firebaseio.com/'
+  databaseURL: 'https://hot-restaurant.firebaseio.com/'
 });
 var db = firebase.database();
 
