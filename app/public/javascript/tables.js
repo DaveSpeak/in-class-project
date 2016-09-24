@@ -12,10 +12,10 @@ $(document).ready(function(){
         tr.addClass('table-row');
         tr.append($('<td class="text-center">').text(name));
         tr.append($('<td class="text-center">').text(email));
-        tr.append($('<td class="text-center">').text(phone);
-        tr.append($('<td class="text-center">').text(id);
+        tr.append($('<td class="text-center">').text(phone));
+        tr.append($('<td class="text-center">').text(id));
         $('#tables').append(tr);
       }
     }
-  }
+  });
 });
