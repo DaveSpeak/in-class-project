@@ -16,8 +16,6 @@ $(document).ready(function(){
 					alert('Adding reservation');
 				});
 
-			return false;
+			window.location = '/tables';
 		});
 });
-
-
